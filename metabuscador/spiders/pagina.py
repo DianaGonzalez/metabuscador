@@ -16,7 +16,10 @@ class PaginaSpider(CrawlSpider):
     #allowed_domains = ["pagina.com"]
     start_urls = [
     #    'http://www.dmoz.org/Computers/Programming/Languages/Python/',
-        'http://www.colombia.com/gastronomia/',
+    #    'http://www.colombia.com/gastronomia/',
+    #    'http://hjkftzjfbdfg.heimat.eu/recet1.htm',  #-----------------------------> no toma nada
+    #    'http://canalcocina.es/recetas/buscar/cocina/Cocina%20latinoamericana', #----------> algunos valores no salen desc en ninguno
+        'http://allrecipes.com.ar/recetas/latinoamericana-recetas.aspx', #------>  igual que arriba
     ]
 
     def parse(self, response):
