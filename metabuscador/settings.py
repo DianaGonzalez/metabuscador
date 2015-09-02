@@ -10,13 +10,13 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'metabuscador'
-BOT_VERSION = '1.0'
+#BOT_VERSION = '1.0'
 
 SPIDER_MODULES = ['metabuscador.spiders']
 NEWSPIDER_MODULE = 'metabuscador.spiders'
-USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
-DEPTH_LIMIT = 1
-DOWNLOAD_DELAT = .5
+#USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
+#DEPTH_LIMIT = 1
+#DOWNLOAD_DELAT = .5
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

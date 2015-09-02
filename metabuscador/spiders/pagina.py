@@ -15,7 +15,8 @@ class PaginaSpider(CrawlSpider):
     name = "pagina"
     #allowed_domains = ["pagina.com"]
     start_urls = [
-        'http://www.dmoz.org/Computers/Programming/Languages/Python/',
+    #    'http://www.dmoz.org/Computers/Programming/Languages/Python/',
+        'http://www.colombia.com/gastronomia/',
     ]
 
     def parse(self, response):
