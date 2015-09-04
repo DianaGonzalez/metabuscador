@@ -23,9 +23,12 @@ class PaginaSpider(CrawlSpider):
 
         'http://cocina.facilisimo.com/cocina-latinoamericana-recetas-con-maiz_1067896.html',
         'http://samanthacatering.com/blog/category/recetas/',
+        'http://www.sazoncito.com/',
 
 
     ]
+
+    #---------------------------------------------------------------------------------------------------------------------------------------------
 
     def parse(self, response):
 
@@ -39,7 +42,7 @@ class PaginaSpider(CrawlSpider):
             item['desc'] = sel.xpath('//div[@class="post-text"]').extract()
             yield item
 
-
+    #--------------------------------------------------------------------------------------------------------------------------------------------
 
     def parse(self, response):
 
@@ -53,17 +56,17 @@ class PaginaSpider(CrawlSpider):
             item['desc'] = sel.xpath('//p').extract()
             yield item
 
+    #------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    #def parse(self, response):
+    def parse(self, response):
 
         #sel = Selector(response)
         #sites = sel.xpath('//ul[@class="directory-url"]/li')
         #items = [] //meta[@name="description"/text()].extract()
-    #   for sel in response.xpath('//ul/li'):  # estoy tomando esto mal
-    #        item = MetabuscadorItem()
-    #        item['title'] = sel.xpath('a/text()').extract()
-    #        item['link'] = sel.xpath('a/@href').extract()
-    #        item['desc'] = sel.xpath('//p[@class="js-truncate"]').extract()
-    #        yield item
+       for sel in response.xpath('//ul/li'):  # estoy tomando esto mal
+            item = MetabuscadorItem()
+            item['title'] = sel.xpath('a/text()').extract()
+            item['link'] = sel.xpath('a/@href').extract()
+            item['desc'] = sel.xpath('//p').extract()
+            yield item
 
