@@ -15,21 +15,55 @@ class PaginaSpider(CrawlSpider):
     name = "pagina"
     #allowed_domains = ["pagina.com"]
     start_urls = [
-    #    'http://www.dmoz.org/Computers/Programming/Languages/Python/',
-    #    'http://www.colombia.com/gastronomia/',
-    #    'http://hjkftzjfbdfg.heimat.eu/recet1.htm',  #-----------------------------> no toma nada
-    #    'http://canalcocina.es/recetas/buscar/cocina/Cocina%20latinoamericana', #----------> algunos valores no salen desc en ninguno
-        'http://allrecipes.com.ar/recetas/latinoamericana-recetas.aspx', #------>  igual que arriba
+
+    # PAGUINAS INTERESANTES PERO SIN ALGUNO DE LOS ATRIBUTOS
+    #    'http://allrecipes.com.ar/recetas/latinoamericana-recetas.aspx',
+    #    'https://nypl.bibliocommons.com/list/show/87524369_nypl_mid_manhattan/123810792_muy_delicioso_la_cocina_latinoamericana',
+    #    'http://www.mondolatino.eu/interesgeneral/cocina.php',
+
+        'http://cocina.facilisimo.com/cocina-latinoamericana-recetas-con-maiz_1067896.html',
+        'http://samanthacatering.com/blog/category/recetas/',
+
+
     ]
 
     def parse(self, response):
 
         #sel = Selector(response)
         #sites = sel.xpath('//ul[@class="directory-url"]/li')
-        #items = []
-       for sel in response.xpath('//ul/li'):
+        #items = [] //meta[@name="description"/text()].extract()
+       for sel in response.xpath('//ul/li'):  # estoy tomando esto mal
             item = MetabuscadorItem()
             item['title'] = sel.xpath('a/text()').extract()
             item['link'] = sel.xpath('a/@href').extract()
-            item['desc'] = sel.xpath('text()').extract()
+            item['desc'] = sel.xpath('//div[@class="post-text"]').extract()
             yield item
+
+
+
+    def parse(self, response):
+
+        #sel = Selector(response)
+        #sites = sel.xpath('//ul[@class="directory-url"]/li')
+        #items = [] //meta[@name="description"/text()].extract()
+       for sel in response.xpath('//ul/li'):  # estoy tomando esto mal
+            item = MetabuscadorItem()
+            item['title'] = sel.xpath('a/text()').extract()
+            item['link'] = sel.xpath('a/@href').extract()
+            item['desc'] = sel.xpath('//p').extract()
+            yield item
+
+
+
+    #def parse(self, response):
+
+        #sel = Selector(response)
+        #sites = sel.xpath('//ul[@class="directory-url"]/li')
+        #items = [] //meta[@name="description"/text()].extract()
+    #   for sel in response.xpath('//ul/li'):  # estoy tomando esto mal
+    #        item = MetabuscadorItem()
+    #        item['title'] = sel.xpath('a/text()').extract()
+    #        item['link'] = sel.xpath('a/@href').extract()
+    #        item['desc'] = sel.xpath('//p[@class="js-truncate"]').extract()
+    #        yield item
+
